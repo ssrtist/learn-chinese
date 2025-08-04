@@ -1,0 +1,92 @@
+{
+    "word_list_mastered": {
+        "order": "random",
+        "items": [
+            "banana", "kiwi", "café", "galleta", "pizza", "pasta", "tomate", "patata", "kétchup", "escuela", "mercado", "cocina", "mamá", "papá", "maestro", "papel", "abierto", "feliz", "lo siento"
+        ]
+    },
+    "word_list_foods": {
+        "order": "random",
+        "items": [
+            "manzana", "banana", "naranja", "uva", "sandía", "fresa", "piña", "kiwi", "mango", "arándano",
+            "arroz", "fideo", "pan", "huevo", "leche", "agua", "jugo", "café", "té", "refresco", "pollo", "carne de res", "cerdo",
+            "pescado", "verdura", "fruta", "merienda", "dulce", "galleta", "pastel", "helado", "chocolate", "pizza", "hamburguesa con queso",
+            "papas fritas", "perrito caliente", "sándwich", "ensalada", "sopa", "pasta", "filete", "costillas", "pepperoni", "queso", "tomate",
+            "lechuga", "cebolla", "pimiento", "sal", "azúcar", "mantequilla", "aceite", "salsa de soja", "kétchup", "salsa picante", "pollo crujiente"
+        ]
+    },
+    "word_list_things": {
+        "order": "random",
+        "items": [
+            "coche", "autobús", "tren", "bicicleta", "avión", "árbol", "flor", "hierba", "cielo", "nube", "sol", "luna", "estrella", "cuchara", "tenedor", "cuchillo", "plato", "cuenco", "taza",
+            "vaso", "servilleta", "pañuelo", "cepillo de dientes", "pasta de dientes", "jabón", "toalla", "peine", "cepillo", "tijeras", "bolígrafo",
+            "lápiz", "borrador", "libro", "cuaderno", "papel", "bolsa", "caja", "pelota", "sartén", "olla", "botella", "ipad"
+        ]
+    },
+    "word_list_places": {
+        "order": "random",
+        "items": [
+            "escuela", "hogar", "parque", "mercado", "patio trasero", "arriba", "abajo", "sótano", "baño", "cocina", "hotel", "ascensor"
+        ]
+    },
+    "word_list_people": {
+        "order": "random",
+        "items": [
+            "papá", "mamá", "hermano", "hermana", "maestro", "abuela", "abuelo", "tío", "tía", "doctor", "dentista", "enfermera", "policía", "primo", "compañero de clase", "vecino", "cartero", "camarero", "camarera"
+        ]
+    },
+    "word_list_actions": {
+        "order": "random",
+        "items": [
+            "caminar", "correr", "saltar", "nadar", "bailar", "cantar", "dibujar", "colorear", "leer", "escribir", "jugar", "mirar", "escuchar", "comer", "beber", "dormir", "despertarse", "ir", "venir", "sentarse", "pararse", "abrir", "cerrar", "empujar", "tirar",
+            "limpiar", "lavar", "cocinar", "cortar", "comprar", "pagar", "ayudar", "conducir", "montar", "ducharse"
+        ]
+    },
+    "word_list_animals": {
+        "order": "random",
+        "items": [
+            "gato", "perro",
+            "caballo", "vaca", "oveja", "elefante", "león", "tigre", "jirafa", "caimán", "conejo", "tortuga", "mono",
+            "pájaro", "serpiente", "ratón", "tiburón"
+        ]
+    },
+    "word_list_feelings": {
+        "order": "random",
+        "items": [
+            "por favor", "lo siento", "sí", "no", "bueno", "malo", "feliz", "triste", "enojado", "cansado", "hambriento", "sediento",
+            "caliente", "frío", "grande", "pequeño", "largo", "corto", "alto", "rápido", "lento", "picazón", "sediento"
+        ]
+    },
+    "word_list_numbers": {
+        "order": "random",
+        "items": [
+            "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "30", "40", "50", "60", "70", "80", "90", "100"
+        ]
+    },
+    "word_list_time": {
+        "order": "random",
+        "items": [
+            "lunes", "martes", "miércoles", "jueves", "viernes", "sábado", "domingo", "día de la semana", "fin de semana",
+            "enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre",
+            "hoy", "mañana", "ayer", "mañana", "tarde", "noche", "noche", "semana", "mes", "año",
+            "ahora", "más tarde", "pronto", "temprano", "tarde", "en punto", "primero", "segundo", "tercero", "luego", "después", "antes", "siguiente", "último"
+        ]
+    },
+    "phrase_list": {
+        "order": "random",
+        "items": [
+            "siéntate bien", "siéntate derecho", "detente y espera", "espera el coche", "espera la luz", "detente y mira", "mira y cruza",
+            "cruza la calle", "levántate", "siéntate", "enciende", "apaga", "limpia", "ponte", "quítate", "es hora de levantarse",
+            "es hora de dormir", "espera la cena", "cena", "ir a patinar", "jugar al tenis", "jugar al baloncesto", "montar en bicicleta",
+            "ir al coche", "ir al mercado", "ir al parque", "necesito hacer pis", "necesito hacer caca", "tengo hambre", "tengo sueño", "nos vemos luego",
+            "nos vemos mañana", "adiós", "buenos días", "buenas noches", "gracias", "sí por favor", "no gracias", "lo siento", "salud",
+            "peinar el pelo", "cepillarse los dientes"
+        ]
+    },
+    "word_list_test": {
+        "order": "random",
+        "items": [
+            "montar en bicicleta", "ir al mercado", "ir al parque", "peinar el pelo", "cepillarse los dientes"
+        ]
+    }
+}

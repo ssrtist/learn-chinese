@@ -1,0 +1,5 @@
+pygame==2.5.2
+gtts==2.5.1
+SpeechRecognition==3.10.1
+numpy==1.26.4
+sounddevice
