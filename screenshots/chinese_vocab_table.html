@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chinese Vocabulary Study Table</title>
+    <style>
+        @media print {
+            body { margin: 0.5in; }
+            .no-print { display: none; }
+            .page-break { page-break-before: always; }
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', 'SimHei', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #ff6b6b, #ffa500);
+            color: white;
+            text-align: center;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(255,255,255,0.1) 10px,
+                rgba(255,255,255,0.1) 20px
+            );
+            animation: slide 20s linear infinite;
+        }
+        
+        @keyframes slide {
+            0% { transform: translateX(-50px); }
+            100% { transform: translateX(50px); }
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            position: relative;
+            z-index: 1;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .category {
+            background: linear-gradient(135deg, #f8f9ff, #e8f0ff);
+            border-radius: 12px;
+            padding: 20px;
+            border: 2px solid #e1e8ff;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .category::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+        
+        .category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .category h2 {
+            color: #4a5568;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .category-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.8em;
+        }
+        
+        .word-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            gap: 8px;
+        }
+        
+        .word-item {
+            background: white;
+            padding: 8px 6px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 0.9em;
+            color: #2d3748;
+            border: 1px solid #e2e8f0;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+        
+        .word-item:hover {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            transform: scale(1.05);
+        }
+        
+        .phrase-section {
+            background: linear-gradient(135deg, #fff5f5, #ffe8e8);
+            border-radius: 12px;
+            padding: 25px;
+            border: 2px solid #fbb6ce;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .phrase-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #ff6b6b, #ffa500);
+        }
+        
+        .phrase-section h2 {
+            color: #c53030;
+            margin-bottom: 20px;
+            font-size: 1.6em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .phrase-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 10px;
+        }
+        
+        .phrase-item {
+            background: white;
+            padding: 12px 10px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 0.95em;
+            color: #2d3748;
+            border: 1px solid #feb2b2;
+            transition: all 0.2s ease;
+        }
+        
+        .phrase-item:hover {
+            background: linear-gradient(135deg, #ff6b6b, #ffa500);
+            color: white;
+            transform: scale(1.05);
+        }
+        
+        .stats {
+            background: linear-gradient(135deg, #f0fff4, #e6fffa);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 30px;
+            border: 2px solid #9ae6b4;
+            text-align: center;
+        }
+        
+        .stats h3 {
+            color: #38a169;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+        
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .stat-item {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #9ae6b4;
+        }
+        
+        .stat-number {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #38a169;
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 0.9em;
+            color: #4a5568;
+            margin-top: 5px;
+        }
+        
+        @media (max-width: 768px) {
+            .category-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .word-grid {
+                grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+            }
+            
+            .phrase-grid {
+                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>中文词汇表</h1>
+            <p>Chinese Vocabulary Study Guide</p>
+        </div>
+        
+        <div class="content">
+            <div class="category-grid">
+                <div class="category">
+                    <h2><span class="category-icon">已</span>已掌握词汇 (Mastered Words)</h2>
+                    <div class="word-grid">
+                        <div class="word-item">香蕉</div>
+                        <div class="word-item">奇异果</div>
+                        <div class="word-item">咖啡</div>
+                        <div class="word-item">饼干</div>
+                        <div class="word-item">披萨</div>
+                        <div class="word-item">意大利粉</div>
+                        <div class="word-item">番茄</div>
+                        <div class="word-item">土豆</div>
+                        <div class="word-item">番茄酱</div>
+                        <div class="word-item">学校</div>
+                        <div class="word-item">市场</div>
+                        <div class="word-item">厨房</div>
+                        <div class="word-item">妈妈</div>
+                        <div class="word-item">爸爸</div>
+                        <div class="word-item">老师</div>
+                        <div class="word-item">打开</div>
+                        <div class="word-item">开心</div>
+                        <div class="word-item">对不起</div>
+                    </div>
+                </div>
+                
+                <div class="category">
+                    <h2><span class="category-icon">食</span>食物 (Foods)</h2>
+                    <div class="word-grid">
+                        <div class="word-item">苹果</div>
+                        <div class="word-item">香蕉</div>
+                        <div class="word-item">橙子</div>
+                        <div class="word-item">葡萄</div>
+                        <div class="word-item">西瓜</div>
+                        <div class="word-item">草莓</div>
+                        <div class="word-item">菠萝</div>
+                        <div class="word-item">奇异果</div>
+                        <div class="word-item">芒果</div>
+                        <div class="word-item">蓝莓</div>
+                        <div class="word-item">米饭</div>
+                        <div class="word-item">面条</div>
+                        <div class="word-item">面包</div>
+                        <div class="word-item">鸡蛋</div>
+                        <div class="word-item">牛奶</div>
+                        <div class="word-item">清水</div>
+                        <div class="word-item">果汁</div>
+                        <div class="word-item">咖啡</div>
+                        <div class="word-item">茶水</div>
+                        <div class="word-item">汽水</div>
+                        <div class="word-item">鸡肉</div>
+                        <div class="word-item">牛肉</div>
+                        <div class="word-item">猪肉</div>
+                        <div class="word-item">鱼</div>
+                        <div class="word-item">蔬菜</div>
+                        <div class="word-item">水果</div>
+                        <div class="word-item">零食</div>
+                        <div class="word-item">糖果</div>
+                        <div class="word-item">饼干</div>
+                        <div class="word-item">蛋糕</div>
+                        <div class="word-item">冰淇淋</div>
+                        <div class="word-item">巧克力</div>
+                        <div class="word-item">披萨</div>
+                        <div class="word-item">芝士汉堡</div>
+                        <div class="word-item">薯条</div>
+                        <div class="word-item">热狗</div>
+                        <div class="word-item">三明治</div>
+                        <div class="word-item">沙拉</div>
+                        <div class="word-item">汤</div>
+                        <div class="word-item">意大利粉</div>
+                        <div class="word-item">牛排</div>
+                        <div class="word-item">排骨</div>
+                        <div class="word-item">香肠</div>
+                        <div class="word-item">奶酪</div>
+                        <div class="word-item">番茄</div>
+                        <div class="word-item">生菜</div>
+                        <div class="word-item">洋葱</div>
+                        <div class="word-item">辣椒</div>
+                        <div class="word-item">盐</div>
+                        <div class="word-item">白糖</div>
+                        <div class="word-item">黄油</div>
+                        <div class="word-item">橄榄油</div>
+                        <div class="word-item">酱油</div>
+                        <div class="word-item">番茄酱</div>
+                        <div class="word-item">辣酱</div>
+                        <div class="word-item">脆皮鸡</div>
+                    </div>
+                </div>
+                
+                <div class="category">
+                    <h2><span class="category-icon">物</span>物品 (Things)</h2>
+                    <div class="word-grid">
+                        <div class="word-item">汽车</div>
+                        <div class="word-item">公共汽车</div>
+                        <div class="word-item">火车</div>
+                        <div class="word-item">自行车</div>
+                        <div class="word-item">飞机</div>
+                        <div class="word-item">树木</div>
+                        <div class="word-item">鲜花</div>
+                        <div class="word-item">青草</div>
+                        <div class="word-item">天空</div>
+                        <div class="word-item">白云</div>
+                        <div class="word-item">太阳</div>
+                        <div class="word-item">月亮</div>
+                        <div class="word-item">星星</div>
+                        <div class="word-item">勺子</div>
+                        <div class="word-item">叉子</div>
+                        <div class="word-item">刀子</div>
+                        <div class="word-item">盘子</div>
+                        <div class="word-item">小碗</div>
+                        <div class="word-item">杯子</div>
+                        <div class="word-item">玻璃杯</div>
+                        <div class="word-item">餐巾</div>
+                        <div class="word-item">纸巾</div>
+                        <div class="word-item">牙刷</div>
+                        <div class="word-item">牙膏</div>
+                        <div class="word-item">肥皂</div>
+                        <div class="word-item">毛巾</div>
+                        <div class="word-item">梳子</div>
+                        <div class="word-item">刷子</div>
+                        <div class="word-item">剪刀</div>
+                        <div class="word-item">钢笔</div>
+                        <div class="word-item">铅笔</div>
+                        <div class="word-item">橡皮擦</div>
+                        <div class="word-item">书本</div>
+                        <div class="word-item">笔记本</div>
+                        <div class="word-item">纸张</div>
+                        <div class="word-item">书包</div>
+                        <div class="word-item">盒子</div>
+                        <div class="word-item">皮球</div>
+                        <div class="word-item">平底锅</div>
+                        <div class="word-item">炒锅</div>
+                        <div class="word-item">瓶子</div>
+                        <div class="word-item">平板电脑</div>
+                    </div>
+                </div>
+                
+                <div class="category">
+                    <h2><span class="category-icon">地</span>地方 (Places)</h2>
+                    <div class="word-grid">
+                        <div class="word-item">学校</div>
+                        <div class="word-item">家里</div>
+                        <div class="word-item">公园</div>
+                        <div class="word-item">市场</div>
+                        <div class="word-item">后院</div>
+                        <div class="word-item">楼上</div>
+                        <div class="word-item">楼下</div>
+                        <div class="word-item">地下室</div>
+                        <div class="word-item">卫生间</div>
+                        <div class="word-item">厨房</div>
+                        <div class="word-item">酒店</div>
+                        <div class="word-item">电梯</div>
+                    </div>
+                </div>
+                
+                <div class="category">
+                    <h2><span class="category-icon">人</span>人物 (People)</h2>
+                    <div class="word-grid">
+                        <div class="word-item">爸爸</div>
+                        <div class="word-item">妈妈</div>
+                        <div class="word-item">哥哥</div>
+                        <div class="word-item">弟弟</div>
+                        <div class="word-item">姐姐</div>
+                        <div class="word-item">妹妹</div>
+                        <div class="word-item">老师</div>
+                        <div class="word-item">奶奶</div>
+                        <div class="word-item">爷爷</div>
+                        <div class="word-item">叔叔</div>
+                        <div class="word-item">伯伯</div>
+                        <div class="word-item">阿姨</div>
+                        <div class="word-item">医生</div>
+                        <div class="word-item">牙医</div>
+                        <div class="word-item">护士</div>
+                        <div class="word-item">警察</div>
+                        <div class="word-item">表兄</div>
+                        <div class="word-item">表弟</div>
+                        <div class="word-item">表姐</div>
+                        <div class="word-item">表妹</div>
+                        <div class="word-item">堂兄</div>
+                        <div class="word-item">堂弟</div>
+                        <div class="word-item">堂姐</div>
+                        <div class="word-item">堂妹</div>
+                        <div class="word-item">同学</div>
+                        <div class="word-item">邻居</div>
+                        <div class="word-item">邮递员</div>
+                        <div class="word-item">服务员</div>
+                    </div>
+                </div>
+                
+                <div class="category">
+                    <h2><span class="category-icon">动</span>动作 (Actions)</h2>
+                    <div class="word-grid">
+                        <div class="word-item">走路</div>
+                        <div class="word-item">跑步</div>
+                        <div class="word-item">跳跃</div>
+                        <div class="word-item">游泳</div>
+                        <div class="word-item">跳舞</div>
+                        <div class="word-item">唱歌</div>
+                        <div class="word-item">画画</div>
+                        <div class="word-item">涂色</div>
+                        <div class="word-item">读书</div>
+                        <div class="word-item">写字</div>
+                        <div class="word-item">玩耍</div>
+                        <div class="word-item">看看</div>
+                        <div class="word-item">听听</div>
+                        <div class="word-item">吃东西</div>
+                        <div class="word-item">喝东西</div>
+                        <div class="word-item">睡觉</div>
+                        <div class="word-item">醒来</div>
+                        <div class="word-item">出去</div>
+                        <div class="word-item">过来</div>
+                        <div class="word-item">坐下</div>
+                        <div class="word-item">站起来</div>
+                        <div class="word-item">打开</div>
+                        <div class="word-item">关闭</div>
+                        <div class="word-item">推开</div>
+                        <div class="word-item">拉回</div>
+                        <div class="word-item">打扫</div>
+                        <div class="word-item">清洗</div>
+                        <div class="word-item">做饭</div>
+                        <div class="word-item">切菜</div>
+                        <div class="word-item">买东西</div>
+                        <div class="word-item">付钱</div>
+                        <div class="word-item">帮助</div>
+                        <div class="word-item">开车</div>
+                        <div class="word-item">骑车</div>
+                        <div class="word-item">洗澡</div>
+                    </div>
+                </div>
+                
+                <div class="category">
+                    <h2><span class="category-icon">动</span>动物 (Animals)</h2>
+                    <div class="word-grid">
+                        <div class="word-item">小猫</div>
+                        <div class="word-item">小狗</div>
+                        <div class="word-item">一匹马</div>
+                        <div class="word-item">一头牛</div>
+                        <div class="word-item">一只羊</div>
+                        <div class="word-item">大象</div>
+                        <div class="word-item">狮子</div>
+                        <div class="word-item">老虎</div>
+                        <div class="word-item">长颈鹿</div>
+                        <div class="word-item">鳄鱼</div>
+                        <div class="word-item">兔子</div>
+                        <div class="word-item">乌龟</div>
+                        <div class="word-item">猴子</div>
+                        <div class="word-item">小鸟</div>
+                        <div class="word-item">一条蛇</div>
+                        <div class="word-item">老鼠</div>
+                        <div class="word-item">鲨鱼</div>
+                    </div>
+                </div>
+                
+                <div class="category">
+                    <h2><span class="category-icon">感</span>感受 (Feelings)</h2>
+                    <div class="word-grid">
+                        <div class="word-item">请</div>
+                        <div class="word-item">对不起</div>
+                        <div class="word-item">是的</div>
+                        <div class="word-item">不是</div>
+                        <div class="word-item">好的</div>
+                        <div class="word-item">坏的</div>
+                        <div class="word-item">开心</div>
+                        <div class="word-item">难过</div>
+                        <div class="word-item">生气</div>
+                        <div class="word-item">我累了</div>
+                        <div class="word-item">我饿了</div>
+                        <div class="word-item">我渴了</div>
+                        <div class="word-item">我困了</div>
+                        <div class="word-item">我害怕</div>
+                        <div class="word-item">我病了</div>
+                        <div class="word-item">我喜欢</div>
+                        <div class="word-item">我不喜欢</div>
+                        <div class="word-item">我热</div>
+                        <div class="word-item">我冷</div>
+                        <div class="word-item">很大</div>
+                        <div class="word-item">很小</div>
+                        <div class="word-item">很长</div>
+                        <div class="word-item">很短</div>
+                        <div class="word-item">很高</div>
+                        <div class="word-item">很快</div>
+                        <div class="word-item">很慢</div>
+                        <div class="word-item">很痒</div>
+                        <div class="word-item">口渴</div>
+                    </div>
+                </div>
+                
+                <div class="category">
+                    <h2><span class="category-icon">数</span>数字 (Numbers)</h2>
+                    <div class="word-grid">
+                        <div class="word-item">1</div>
+                        <div class="word-item">2</div>
+                        <div class="word-item">3</div>
+                        <div class="word-item">4</div>
+                        <div class="word-item">5</div>
+                        <div class="word-item">6</div>
+                        <div class="word-item">7</div>
+                        <div class="word-item">8</div>
+                        <div class="word-item">9</div>
+                        <div class="word-item">10</div>
+                        <div class="word-item">11</div>
+                        <div class="word-item">12</div>
+                        <div class="word-item">13</div>
+                        <div class="word-item">14</div>
+                        <div class="word-item">15</div>
+                        <div class="word-item">16</div>
+                        <div class="word-item">17</div>
+                        <div class="word-item">18</div>
+                        <div class="word-item">19</div>
+                        <div class="word-item">20</div>
+                        <div class="word-item">30</div>
+                        <div class="word-item">40</div>
+                        <div class="word-item">50</div>
+                        <div class="word-item">60</div>
+                        <div class="word-item">70</div>
+                        <div class="word-item">80</div>
+                        <div class="word-item">90</div>
+                        <div class="word-item">100</div>
+                    </div>
+                </div>
+                
+                <div class="category">
+                    <h2><span class="category-icon">时</span>时间 (Time)</h2>
+                    <div class="word-grid">
+                        <div class="word-item">星期一</div>
+                        <div class="word-item">星期二</div>
+                        <div class="word-item">星期三</div>
+                        <div class="word-item">星期四</div>
+                        <div class="word-item">星期五</div>
+                        <div class="word-item">星期六</div>
+                        <div class="word-item">星期日</div>
+                        <div class="word-item">工作日</div>
+                        <div class="word-item">周末</div>
+                        <div class="word-item">一月</div>
+                        <div class="word-item">二月</div>
+                        <div class="word-item">三月</div>
+                        <div class="word-item">四月</div>
+                        <div class="word-item">五月</div>
+                        <div class="word-item">六月</div>
+                        <div class="word-item">七月</div>
+                        <div class="word-item">八月</div>
+                        <div class="word-item">九月</div>
+                        <div class="word-item">十月</div>
+                        <div class="word-item">十一月</div>
+                        <div class="word-item">十二月</div>
+                        <div class="word-item">今天</div>
+                        <div class="word-item">明天</div>
+                        <div class="word-item">昨天</div>
+                        <div class="word-item">早上</div>
+                        <div class="word-item">下午</div>
+                        <div class="word-item">晚上</div>
+                        <div class="word-item">一星期</div>
+                        <div class="word-item">一个月</div>
+                        <div class="word-item">一年</div>
+                        <div class="word-item">现在</div>
+                        <div class="word-item">稍后</div>
+                        <div class="word-item">很快</div>
+                        <div class="word-item">点钟</div>
+                        <div class="word-item">第一</div>
+                        <div class="word-item">第二</div>
+                        <div class="word-item">第三</div>
+                        <div class="word-item">然后</div>
+                        <div class="word-item">之后</div>
+                        <div class="word-item">之前</div>
+                        <div class="word-item">下一个</div>
+                        <div class="wor

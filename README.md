@@ -1,16 +1,16 @@
-# Coso's Speech Game
+# Little Speech Game (Learn Chinese Edition)
 
-A speech-driven educational game for practicing words, phrases, and sentences with real-time feedback, MIDI music, and engaging visuals.
+A speech-driven educational game for practicing Chinese (Mandarin) words and phrases with real-time feedback, MIDI music, and engaging visuals.
 
 -----
 
 ## Features
 
-  - **Enhanced Speech Recognition**: Calibrates to ambient noise for improved accuracy. Uses your microphone to recognize spoken words, phrases, or sentences.
+  - **Enhanced Speech Recognition**: Calibrates to ambient noise for improved accuracy. Uses your microphone to recognize spoken words and phrases in Chinese.
   - **Selectable Content**: Choose from multiple word lists directly from the main menu.
-  - **Text-to-Speech**: Prompts and feedback are spoken aloud using gTTS.
+  - **Text-to-Speech (TTS)**: Prompts and feedback are spoken aloud in Mandarin Chinese using gTTS.
   - **Multiple Modes**: Practice with words or phrases.
-  - **Custom Content**: Easily edit `config.json` to change or add new word and phrase lists.
+  - **Custom Content**: Easily edit `config_zh.json` to change or add new word and phrase lists.
   - **Rich Visual Feedback**: Animated highlights, clipart for words, and progress indicators.
   - **Sound & Music**: Includes audio feedback for correct/incorrect answers, celebration melodies using MIDI, and a dance animation sequence for positive reinforcement.
   - **Clipart Support**: Shows relevant images for each word (from `assets/images/clipart/vector`).
