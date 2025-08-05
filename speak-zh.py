@@ -838,7 +838,7 @@ class TalkingGame:
         global RECOGNIZED_TEXT, RECOGNIZED_DATA, RECOGNIZER_STATUS
         """Handles the words mode loop."""
         back_button =     Button(self.screen_width - 220, self.screen_height - 70, "Back", 200, 50, DARK_RED)
-        next_button =     Button(self.screen_width - 220, self.screen_height - 150, "Next", 200, 50, DARK_GREEN)
+        next_button =     Button(self.screen_width - 220, self.screen_height - 150, "Skip", 200, 50, DARK_GREEN)
         new_game_button = Button(self.screen_width - 430, self.screen_height - 70, "More", 200, 50)
 
         self.game_font = self.game_font_large
